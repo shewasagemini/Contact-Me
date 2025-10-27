@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    
+    <!-- EXTERNAL CSS: Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- INTERNAL CSS: Page-specific styles -->
+    <style>
+        /* Form Success Message Animation */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #640899f5, #640899f5);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Send Another Button */
+        .send-another-btn {
+            background: #934ebb;
+            color: #1a1a1a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .send-another-btn:hover {
+            background: #934ebb;
+            transform: translateY(-2px);
+        }
+
+        /* Welcome Panel Styling */
+        .contact-info {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 50%, #f59e0b 100%);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .welcome-content h1 {
+            font-size: 64px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .welcome-content p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            max-width: 350px;
+        }
+
+        /* Hide original info items */
+        .info-item {
+            display: none;
+        }
+
+        /* Form Section Adjustments */
+        .form-section h2 {
+            color: #5b4a9d;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .form-section .subtitle {
+            color: #888;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-info">
+            <!-- New Welcome Content -->
+            <div class="welcome-content">
+                <!-- INLINE CSS: Special text shadow for emphasis -->
+                <h1 style="text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);">Welcome Back!</h1>
+                <p>Send me a message and I'll get back to you as soon as possible.</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <!-- INLINE CSS: Specific color emphasis for heading -->
+            <h2 style="border-bottom: 3px solid #5b4a9d; padding-bottom: 10px; display: inline-block;">Contact Me</h2>
+            <p class="subtitle">Fill out the form below and I'll respond to your inquiry.</p>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <!-- INLINE CSS: Label styling -->
+                    <label style="display: block; color: #5b4a9d; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- INLINE CSS: Label styling -->
+                    <label style="display: block; color: #5b4a9d; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- INLINE CSS: Label styling -->
+                    <label style="display: block; color: #5b4a9d; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Message</label>
+                    <textarea id="message" placeholder="Enter your message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <div style="font-size: 48px; margin-bottom: 10px;">✓</div>
+                <div style="font-size: 18px; margin-bottom: 5px;">Message has been submitted!</div>
+                <p style="font-size: 14px; opacity: 0.9; margin-bottom: 15px;">Thank you for reaching out. I'll get back to you soon.</p>
+                <button class="send-another-btn" id="sendAnotherBtn">Send Another Message</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for form interactivity
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const sendAnotherBtn = document.getElementById('sendAnotherBtn');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide form and show success message
+            contactForm.style.display = 'none';
+            successMessage.style.display = 'block';
+        });
+
+        sendAnotherBtn.addEventListener('click', function() {
+            // Reset form
+            contactForm.reset();
+            
+            // Show form and hide success message
+            contactForm.style.display = 'block';
+            successMessage.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
